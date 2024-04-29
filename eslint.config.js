@@ -7,6 +7,13 @@ const compat = new FlatCompat({
   recommendedConfig: js.configs.recommended,
 });
 
+const depConstraints = [
+  {
+    sourceTag: '*',
+    onlyDependOnLibsWithTags: ['*'],
+  },
+];
+
 module.exports = [
   { plugins: { '@nx': nxEslintPlugin } },
   {
@@ -17,12 +24,7 @@ module.exports = [
         {
           enforceBuildableLibDependency: true,
           allow: [],
-          depConstraints: [
-            {
-              sourceTag: '*',
-              onlyDependOnLibsWithTags: ['*'],
-            },
-          ],
+          depConstraints
         },
       ],
     },
